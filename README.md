@@ -4,27 +4,25 @@ This project implements a serverless data pipeline that fetches social media pos
 
 ![Architecture Diagram](Architecture.png)
 
-🚀 Architecture Overview
+⚙️ End-to-End Architecture Workflow
 
-BlueskyAPI: Source of social media posts.
+1. Data Collection
+A Lambda function is triggered every 5 minutes using Amazon EventBridge.
+It fetches fresh posts from the Bluesky API.
 
-AWS Lambda: Scheduled via EventBridge every 5 minutes to:
+2. Data Storage
+The raw JSON data fetched from the API is stored in an Amazon S3 bucket for archival and reproducibility.
 
-Fetch raw data from the Bluesky API.
+3. Sentiment Analysis
+The same Lambda function invokes a SageMaker endpoint that runs a pre-trained sentiment analysis model.
+The endpoint returns predicted sentiment labels (Positive, Neutral, Negative) for each post.
 
-Store raw data in Amazon S3.
+4. Database Storage
+The predicted sentiment results, along with the original post content, are stored in an Amazon RDS PostgreSQL database.
 
-Invoke a SageMaker endpoint for sentiment analysis.
+5. Dashboard Visualization
+A Streamlit dashboard queries the RDS database for sentiment data.
+The dashboard is containerized using Docker and deployed on ECS Fargate via Amazon ECR.
+The dashboard runs on port 8051 and provides real-time sentiment insights.
 
-Store the sentiment results in Amazon RDS (PostgreSQL).
-
-Amazon SageMaker Studio Lab: Trained ML model deployed as an endpoint to predict sentiments.
-
-Amazon RDS (PostgreSQL): Stores structured sentiment data for analysis.
-
-Amazon ECS Fargate: Hosts the Streamlit dashboard to visualize data.
-
-Amazon ECR: Stores the Docker image for the dashboard.
-
-Streamlit Dashboard: Accessible on port 8051, queries RDS to display sentiment trends.
 
