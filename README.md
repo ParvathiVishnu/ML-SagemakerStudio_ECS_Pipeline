@@ -18,6 +18,7 @@ The raw JSON data fetched from the API is stored in an Amazon S3 bucket for arch
 
 4. Sentiment Analysis
 The same Lambda function invokes a SageMaker endpoint that analyses sentiments on the posts fetched by the lambda function and train a model and save it in the form of tar.gz format .
+Here the sagemaker endpoint is created using Amazon Sagemaker Studio lab
 The endpoint returns predicted sentiment labels (Positive, Neutral, Negative) along with the confidence_score for each post.
 
 ![Amazon Sagemaker Studio](Images/Amazon_Sagemaker_Studio_Lab.png)
@@ -44,7 +45,8 @@ aws ecr get-login-password | docker login --username AWS --password-stdin 692450
 # Step 3: Tag the image for ECR
 docker tag bluesky-dashboard:latest 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard
 # Step 4: Push the image to ECR
-docker push 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard
+docker push 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard 
+```
 
 The dashboard runs on port 8051 and provides real-time sentiment insights.
 
@@ -52,5 +54,7 @@ The dashboard runs on port 8051 and provides real-time sentiment insights.
 ![ECS](Images/ECS.png)
 ![ECS](Images/ECS-1.png)
 ![ECS](Images/bluesky_dashboard.png)
+
+
 
 
