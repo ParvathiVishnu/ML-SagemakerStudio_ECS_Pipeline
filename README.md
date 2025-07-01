@@ -14,18 +14,28 @@ It fetches fresh posts from the Bluesky API.
 The raw JSON data fetched from the API is stored in an Amazon S3 bucket for archival and reproducibility.
 
 ![S3 bucket](Images/bluesky_bucket-1.png)
-![S3 bucket](Images/bluesky_bucket-2.png)
+![S3 bucket](Images/bluesky_bucket-3.png)
 
 4. Sentiment Analysis
-The same Lambda function invokes a SageMaker endpoint that runs a pre-trained sentiment analysis model.
-The endpoint returns predicted sentiment labels (Positive, Neutral, Negative) for each post.
+The same Lambda function invokes a SageMaker endpoint that analyses sentiments on the posts fetched by the lambda function and train a model and save it in the form of tar.gz format .
+The endpoint returns predicted sentiment labels (Positive, Neutral, Negative) along with the confidence_score for each post.
 
-5. Database Storage
+![Amazon Sagemaker Studio](Images/Amazon_Sagemaker_Studio_Lab.png)
+![S3 bucket](Images/bluesky_bucket-2.png)
+
+6. Database Storage
 The predicted sentiment results, along with the original post content, are stored in an Amazon RDS PostgreSQL database.
 
-6. Dashboard Visualization
+![RDS](Images/RDS.png)
+![pg_admin](Images/pgadmin.png)
+
+
+8. Dashboard Visualization
 A Streamlit dashboard queries the RDS database for sentiment data.
 The dashboard is containerized using Docker and deployed on ECS Fargate via Amazon ECR.
 The dashboard runs on port 8051 and provides real-time sentiment insights.
+
+![RDS](Images/ECR.png)
+![RDS](Images/ECS.png)
 
 
