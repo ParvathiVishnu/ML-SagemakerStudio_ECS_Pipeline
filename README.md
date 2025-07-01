@@ -31,11 +31,20 @@ The predicted sentiment results, along with the original post content, are store
 
 
 8. Dashboard Visualization
+   
 A Streamlit dashboard queries the RDS database for sentiment data.
 The dashboard is containerized using Docker and deployed on ECS Fargate via Amazon ECR.
+
+Docker commands
+docker build -t bluesky-dashboard .
+docker tag bluesky-dashboard:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/bluesky-dashboard
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/bluesky-dashboard
+
 The dashboard runs on port 8051 and provides real-time sentiment insights.
 
-![RDS](Images/ECR.png)
-![RDS](Images/ECS.png)
+![ECR](Images/ECR.png)
+![ECS](Images/ECS.png)
+![ECS](Images/ECS-1.png)
+![ECS](Images/bluesky_dashboard.png)
 
 
