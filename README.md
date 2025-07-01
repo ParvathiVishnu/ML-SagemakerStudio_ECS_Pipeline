@@ -53,7 +53,7 @@ The dashboard runs on port 8051 and provides real-time sentiment insights.
 ![ECR](Images/ECR.png)
 ![ECS](Images/ECS.png)
 ![ECS](Images/ECS-1.png)
-![ECS](Images/bluesky_dashboard.png)
+![ECS](Images/bluesky_dashboard-1.png)
 
 
 
