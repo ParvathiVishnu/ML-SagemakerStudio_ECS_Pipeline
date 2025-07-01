@@ -36,9 +36,15 @@ A Streamlit dashboard queries the RDS database for sentiment data.
 The dashboard is containerized using Docker and deployed on ECS Fargate via Amazon ECR.
 
 Docker commands
+```bash
+# Step 1: Build the Docker image
 docker build -t bluesky-dashboard .
-docker tag bluesky-dashboard:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/bluesky-dashboard
-docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/bluesky-dashboard
+# Step 2: Authenticate Docker to your AWS ECR registry
+aws ecr get-login-password | docker login --username AWS --password-stdin 692450380298.dkr.ecr.ap-south-1.amazonaws.com
+# Step 3: Tag the image for ECR
+docker tag bluesky-dashboard:latest 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard
+# Step 4: Push the image to ECR
+docker push 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard
 
 The dashboard runs on port 8051 and provides real-time sentiment insights.
 
