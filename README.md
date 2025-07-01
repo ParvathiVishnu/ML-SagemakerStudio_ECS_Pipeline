@@ -18,7 +18,7 @@
 
 ### 4. Sentiment Analysis
 ### The same Lambda function invokes a SageMaker endpoint that analyses sentiments on the posts fetched by the lambda function and train a model and save it in the ### form of tar.gz format .
-### Here the sagemaker endpoint is created using Amazon Sagemaker Studio lab
+### Here the sagemaker endpoint is created using Amazon Sagemaker Studio lab.
 ### The endpoint returns predicted sentiment labels (Positive, Neutral, Negative) along with the confidence_score for each post.
 
 ![Amazon Sagemaker Studio](Images/Amazon_Sagemaker_Studio_Lab.png)
@@ -48,11 +48,11 @@ docker tag bluesky-dashboard:latest 692450380298.dkr.ecr.ap-south-1.amazonaws.co
 # Step 4: Push the image to ECR
 docker push 692450380298.dkr.ecr.ap-south-1.amazonaws.com/bluesky-dashboard 
 ```
+![ECR](Images/ECR.png)
+![ECS](Images/ECS.png)
 
 ### The dashboard runs on port 8051 and provides real-time sentiment insights.
 
-![ECR](Images/ECR.png)
-![ECS](Images/ECS.png)
 ![ECS](Images/ECS-1.png)
 ![ECS](Images/bluesky_dashboard-1.png)
 
