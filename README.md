@@ -1,4 +1,4 @@
-🔷 Bluesky Sentiment Analysis Pipeline on AWS
+###🔷 Bluesky Sentiment Analysis Pipeline on AWS
 
 This project implements a serverless data pipeline that fetches social media posts from the Bluesky API, performs sentiment analysis using a machine learning model deployed on Amazon SageMaker, and stores the results in Amazon RDS for visualization via a Streamlit dashboard hosted on Amazon ECS Fargate.
 
