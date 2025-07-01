@@ -13,8 +13,8 @@ It fetches fresh posts from the Bluesky API.
 2. Data Storage
 The raw JSON data fetched from the API is stored in an Amazon S3 bucket for archival and reproducibility.
 
-![S3 bucket](images/bluesky_bucket-1.png)
-![S3 bucket](images/bluesky_bucket-2.png)
+![S3 bucket](Images/bluesky_bucket-1.png)
+![S3 bucket](Images/bluesky_bucket-2.png)
 
 4. Sentiment Analysis
 The same Lambda function invokes a SageMaker endpoint that runs a pre-trained sentiment analysis model.
